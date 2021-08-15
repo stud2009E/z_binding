@@ -2,13 +2,123 @@
 	controllerName="z.bnd.controller.Main"
 	xmlns:mvc="sap.ui.core.mvc"
 	xmlns:core="sap.ui.core"
+	xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
 	displayBlock="true"
 	xmlns="sap.m"
 	height="100%">
 
-    <Page showHeader="false">
+    <Page showHeader="false"
+		title="Binding"
+		class="sapUiContentPadding">
 
-        <core:Fragment type="XML" fragmentName="z.bnd.fragment.Example"/>
+		<Panel headerText="template"
+			expandable="true"
+			expanded="false">
+			<List id="template"
+				headerText="template"
+				items="{
+					path:'/TestDataSet'
+				}">
+				<items>
+					<StandardListItem 
+						counter="{Int16}"
+						title="{String}"
+						info="{Guid}"
+					/>
+				</items>
+			</List>
+		</Panel>
+
+		<Panel headerText="factory"
+			expandable="true"
+			expanded="false">
+			<List id="factory"
+				headerText="factry"
+				items="{
+					path: '/TestDataSet',
+					factory: '.factoryListItem'
+				}"
+			/>
+		</Panel>
+
+		<f:Form id="contextBindingForm">
+			<f:title>
+				<core:Title text="Context Binding" />
+			</f:title>
+
+			<f:layout>
+				<f:ResponsiveGridLayout
+					labelSpanXL="4"
+					labelSpanL="4"
+					labelSpanM="4"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="0"
+					emptySpanL="0"
+					emptySpanM="0"
+					emptySpanS="0"
+					columnsXL="3"
+					columnsL="2"
+					columnsM="2"
+					singleContainerFullSize="false" />
+			</f:layout>
+
+			<f:formContainers>
+				<f:FormContainer title="Strings">
+					<f:formElements>
+						<f:FormElement label="{Guid/#@sap:label}">
+							<f:fields>
+								<Input value="{Guid}" id="nameText"  />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{String/#@sap:label}">
+							<f:fields>
+								<Input value="{String}" />
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+
+				<f:FormContainer title="Numbers">
+					<f:formElements>
+						<f:FormElement label="{Int16/#@sap:label}">
+							<f:fields>
+								<Input value="{Int16}" id="Int16"  />
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{Int32/#@sap:label}">
+							<f:fields>
+								<Input value="{Int32}" id="Int32"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{Byte/#@sap:label}">
+							<f:fields>
+								<Input value="{Byte}" id="Byte"/>
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+
+				<f:FormContainer title="Dates">
+					<f:formElements>
+						<f:FormElement label="{Date/#@sap:label}">
+							<f:fields>
+								<DateTimePicker value="{Date}"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{Time/#@sap:label}">
+							<f:fields>
+								<TimePicker value="{Time}" 
+									valueFormat="HH:mm:ss"
+									displayFormat="HH:mm:ss"/>
+							</f:fields>
+						</f:FormElement>
+					</f:formElements>
+				</f:FormContainer>
+			</f:formContainers>
+		</f:Form>
+
 
     </Page>
 

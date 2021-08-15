@@ -1,11 +1,17 @@
 sap.ui.define([
-    "./BaseController"
+    "./BaseController",
+    "sap/m/StandardListItem",
+    "sap/m/ObjectListItem",
+    "sap/m/ListType"
 ], function (
-    BaseController
+    BaseController,
+    StandardListItem,
+    ObjectListItem,
+    ListType
 ) {
     "use strict";
 
-    return BaseController.extend("z.bndotnsp .controller.Main", {
+    return BaseController.extend("z.bnd.controller.Main", {
 
         onInit : function () {
 
@@ -18,10 +24,44 @@ sap.ui.define([
          */
         _onRouteMatch: function(oEvent){
 
+        },
 
 
+        factoryListItem: function(sId, oCtx){
+            var bBoolean = oCtx.getProperty("Boolean");
+            var oListItem = null;
+
+            if(bBoolean){
+                oListItem = new ObjectListItem(sId, {
+                    selected: "{Boolean}",
+                    title: "{String}",
+                    intro: "{Guid}",
+                    markFavorite: "{Boolean}",
+                    type: ListType.Active,
+                    press: this.onItemPress.bind(this)
+                });
+            }else{
+                oListItem = new StandardListItem(sId, {
+                    icon: "sap-icon://flag",
+                    selected: "{Boolean}",
+                    title: "{String}",
+                    description: "{Guid}",
+                    info: "{Int16}",
+                    type: ListType.Active,
+                    press: this.onItemPress.bind(this)
+                });
+            }
+
+            return oListItem;
+        },
+
+        onItemPress: function(oEvent){
+            var oContextBindingForm = this.byId("contextBindingForm");
+            var oListItem = oEvent.getSource();
+            var oCtx = oListItem.getBindingContext();
+
+            oContextBindingForm.setBindingContext(oCtx);
         }
-
     });
 
 });

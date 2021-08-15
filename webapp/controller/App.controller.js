@@ -8,23 +8,7 @@ sap.ui.define([
     return BaseController.extend("z.bnd.controller.App", {
 
         onInit : function () {
-            var oView = this.getView();
-            var oServerModel = this.getOwnerComponent().getModel();
-            var fnBusy = function() {
-                oView.setBusy(false);
-            };
-
-            oView.setBusy(true);
             
-            Promise.allSettled([
-                oServerModel.metadataLoaded(),
-                oServerModel.annotationsLoaded()
-            ]).then(fnBusy);
-
-            oServerModel.attachMetadataFailed(fnBusy);
-            oServerModel.attachAnnotationsFailed(fnBusy);
-
-            oView.addStyleClass(this.getOwnerComponent().getContentDensityClass());
         }
 
     });

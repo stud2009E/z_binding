@@ -13,7 +13,7 @@
             <Property Name="Int16" Type="Edm.Int16" MaxLength="10" Nullable="false" sap:label="Int16"/>
             <Property Name="Int32" Type="Edm.Int32" MaxLength="10" Nullable="false" sap:label="Int32"/>
             <Property Name="Date" Type="Edm.DateTime" MaxLength="10" Nullable="false" sap:label="Date"/>
-            <Property Name="Time" Type="Edm.Time" MaxLength="10" Nullable="false" sap:label="Time"/>
+            <Property Name="Time" Type="Edm.String" MaxLength="10" Nullable="false" sap:label="Time"/>
             <Property Name="Byte" Type="Edm.Byte" MaxLength="10" Nullable="false" sap:label="Byte"/>
          </EntityType>
          <EntityContainer Name="CUSTOM_DATA_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">

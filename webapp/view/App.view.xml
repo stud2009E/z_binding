@@ -3,6 +3,7 @@
 	xmlns:mvc="sap.ui.core.mvc"
 	displayBlock="true"
 	xmlns="sap.m"
+	class="sapUiSizeCompact"
 	height="100%">
 
     <App id="app"
