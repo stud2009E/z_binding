@@ -69,12 +69,44 @@
 					<f:formElements>
 						<f:FormElement label="{Guid/#@sap:label}">
 							<f:fields>
-								<Input value="{Guid}" id="nameText"  />
+								<Input id="nameText"
+									value="{
+										path:'Guid',
+										type: 'sap.ui.model.odata.type.Guid',
+										constraints:{
+											nullable: false
+										}
+									}"/>
 							</f:fields>
 						</f:FormElement>
 						<f:FormElement label="{String/#@sap:label}">
 							<f:fields>
-								<Input value="{String}" />
+								<Input
+									value="{
+										path:'String',
+										type: 'sap.ui.model.odata.type.String',
+										formatOptions:{
+											parseKeepsEmptyString: false
+										},
+										constraints: {
+											isDigitSequence: false,
+											nullable: false,
+											maxLength: 10
+										}
+									}"
+								/>
+								<!-- <Input
+									value="{
+										path: 'String',
+										type: 'sap.ui.model.type.String',
+										constraints: {
+											maxLength: 10,
+											minLength: 5,
+											startsWith: 'ab',
+											endsWithIgnoreCase: 'cd'
+										}
+									}"
+								/> -->
 							</f:fields>
 						</f:FormElement>
 					</f:formElements>
@@ -84,17 +116,56 @@
 					<f:formElements>
 						<f:FormElement label="{Int16/#@sap:label}">
 							<f:fields>
-								<Input value="{Int16}" id="Int16"  />
+								<Input  id="Int16"
+									value="{
+										path:'Int16',
+										type: 'sap.ui.model.odata.type.Int16',
+										formatOptions: {
+											style: 'default',
+											groupingSeparator: '-'
+										}
+									}"
+								/>
 							</f:fields>
 						</f:FormElement>
 						<f:FormElement label="{Int32/#@sap:label}">
 							<f:fields>
-								<Input value="{Int32}" id="Int32"/>
+								<Input id="Int32"
+									value="{
+										path: 'Int32',
+										type: 'sap.ui.model.odata.type.Int32',
+										formatOptions: {
+											style: 'default',
+											groupingSeparator: '_'
+										}
+									}"
+								/>
 							</f:fields>
 						</f:FormElement>
 						<f:FormElement label="{Byte/#@sap:label}">
 							<f:fields>
-								<Input value="{Byte}" id="Byte"/>
+								<Input id="Byte"
+									value="{
+										path:'Byte',
+										type: 'sap.ui.model.odata.type.Byte',
+										formatOptions: {}
+									}"/>
+							</f:fields>
+						</f:FormElement>
+						<f:FormElement label="{Decimal/#@sap:label}">
+							<f:fields>
+								<Input id="Decimal"
+									value="{
+										path:'Decimal',
+										type: 'sap.ui.model.odata.type.Decimal',
+										formatOptions: {
+											decimalSeparator: '.'
+										},
+										constraints:{
+											precision: 11,
+											scale: 3
+										}
+									}"/>
 							</f:fields>
 						</f:FormElement>
 					</f:formElements>
@@ -104,12 +175,22 @@
 					<f:formElements>
 						<f:FormElement label="{Date/#@sap:label}">
 							<f:fields>
-								<DateTimePicker value="{Date}"/>
+								<DateTimePicker
+									value="{
+										path:'Date',
+										type: 'sap.ui.model.odata.type.Date',
+										formatOptions: {
+											format: 'yMMMd'
+										}
+									}"/>
 							</f:fields>
 						</f:FormElement>
 						<f:FormElement label="{Time/#@sap:label}">
 							<f:fields>
-								<TimePicker value="{Time}" 
+								<TimePicker value="{
+										path:'Time',
+										type: 'sap.ui.model.odata.type.Time'
+									}" 
 									valueFormat="HH:mm:ss"
 									displayFormat="HH:mm:ss"/>
 							</f:fields>
@@ -118,7 +199,6 @@
 				</f:FormContainer>
 			</f:formContainers>
 		</f:Form>
-
 
     </Page>
 

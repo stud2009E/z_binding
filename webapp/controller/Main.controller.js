@@ -14,8 +14,11 @@ sap.ui.define([
     return BaseController.extend("z.bnd.controller.Main", {
 
         onInit : function () {
-
             this.getRouter().getRoute("main").attachMatched(this._onRouteMatch, this);
+        
+            var oView = this.getView();
+            var oMessageManager = sap.ui.getCore().getMessageManager();
+            oMessageManager.registerObject(oView, true);
         },
 
         /**
