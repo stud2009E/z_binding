@@ -95,7 +95,12 @@
 			"local": {
 				"type": "sap.ui.model.json.JSONModel",
 				"settings": {
-					"color": "red"
+					"color": "red",
+					"cardNumber": {
+						"visa": "",
+						"payPal": "",
+						"mir": ""
+					}
 				}
 			}
 		},

@@ -64,6 +64,16 @@ sap.ui.define([
             var oCtx = oListItem.getBindingContext();
 
             oContextBindingForm.setBindingContext(oCtx);
+        },
+
+        validateFieldGroupPanel: function(oEvent){
+            
+            oEvent.bCancelBubble = true;
+        },
+
+        validateFieldGroupVBox: function(oEvent){
+            
+            oEvent.bCancelBubble = false;
         }
     });
 

@@ -208,14 +208,45 @@
 		<Panel headerText="custom data type"
 			expandable="true"
 			expanded="true"
+			validateFieldGroup=".validateFieldGroupPanel"
 			visible="true">
 			
-			<Input id="colorTypeInput" 
+			<Input id="colorTypeInput"
+				width="50%"
 				value="{
 					model: 'local',
 					path: '/color',
 					type: 'ColorType'	
 				}"/>
+
+			<VBox validateFieldGroup=".validateFieldGroupVBox">
+				<Label text="Visa"/>
+				<Input id="visa" 
+					fieldGroupIds="cardNumber,visa"
+					width="50%"
+					value="{
+						model: 'local',
+						path: '/cardNumber/visa'
+					}"/>
+
+				<Label text="Mir"/>
+				<Input id="mir" 
+					fieldGroupIds="cardNumber,mir"
+					width="50%"
+					value="{
+						model: 'local',
+						path: '/cardNumber/mir'
+					}"/>
+
+				<Label text="PayPal"/>
+				<Input id="payPal" 
+					fieldGroupIds="cardNumber,payPal"
+					width="50%"
+					value="{
+						model: 'local',
+						path: '/cardNumber/payPal'
+					}"/>
+			</VBox>
 
 		</Panel>
     </Page>
