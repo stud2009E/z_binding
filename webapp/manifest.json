@@ -91,6 +91,12 @@
                     "defaultBindingMode": "TwoWay",
                     "useBatch": true
                 }
+			},
+			"local": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {
+					"color": "red"
+				}
 			}
 		},
 		"routing": {
