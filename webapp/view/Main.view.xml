@@ -248,6 +248,10 @@
 					}"/>
 			</VBox>
 
+			<Button text="check"
+				press="onCheckButtonPress"
+			/> 
+
 		</Panel>
     </Page>
 

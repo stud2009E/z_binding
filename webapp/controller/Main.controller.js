@@ -2,12 +2,18 @@ sap.ui.define([
     "./BaseController",
     "sap/m/StandardListItem",
     "sap/m/ObjectListItem",
-    "sap/m/ListType"
+    "sap/m/ListType",
+    "sap/ui/core/message/ControlMessageProcessor",
+    "sap/ui/core/MessageType",
+    "sap/ui/core/message/Message"
 ], function (
     BaseController,
     StandardListItem,
     ObjectListItem,
-    ListType
+    ListType,
+    ControlMessageProcessor,
+    MessageType,
+    Message
 ) {
     "use strict";
 
@@ -17,8 +23,11 @@ sap.ui.define([
             this.getRouter().getRoute("main").attachMatched(this._onRouteMatch, this);
         
             var oView = this.getView();
-            var oMessageManager = sap.ui.getCore().getMessageManager();
-            oMessageManager.registerObject(oView, true);
+            this._messageManager = sap.ui.getCore().getMessageManager();
+            this._messageManager.registerObject(oView, true);
+
+            this._controlMsgProcessor = new ControlMessageProcessor();
+            this._messageManager.registerMessageProcessor(this._controlMsgProcessor);
         },
 
         /**
@@ -72,8 +81,24 @@ sap.ui.define([
         },
 
         validateFieldGroupVBox: function(oEvent){
-            
-            oEvent.bCancelBubble = false;
+            var oView = this.getView();
+            var sPayPalId = oView.createId("payPal");
+
+            this._messageManager.addMessages(
+                new Message({
+                    message: "my message about something",
+                    type: MessageType.Error,
+                    target: sPayPalId + "/value",
+                    processor: this._controlMsgProcessor
+                })
+            );
+
+            oEvent.bCancelBubble = true;
+        },
+
+
+        onCheckButtonPress: function(){
+
         }
     });
 
